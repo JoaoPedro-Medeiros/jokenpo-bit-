@@ -3,17 +3,19 @@ let pontos_microbit = 0
 let pontos_jogador = 0
 let pontos_jogador_2 = 0
 basic.forever(function () {
+    basic.pause(1000)
     if (input.isGesture(Gesture.Shake)) {
         basic.clearScreen()
-        basic.showString("Ready Set")
+        basic.showString("PvM")
         basic.showString("Go!")
         while (true) {
+            basic.clearScreen()
             jogada = randint(1, 3)
             if (jogada == 1) {
                 basic.showIcon(IconNames.Diamond)
                 basic.pause(200)
             } else if (jogada == 2) {
-                basic.showIcon(IconNames.Chessboard)
+                basic.showIcon(IconNames.Square)
                 basic.pause(200)
             } else {
                 basic.showIcon(IconNames.No)
@@ -22,11 +24,13 @@ basic.forever(function () {
             while (true) {
                 if (input.buttonIsPressed(Button.A)) {
                     pontos_microbit += 1
-                    basic.showString("Sorry")
+                    basic.clearScreen()
+                    basic.showIcon(IconNames.Sad)
                     break;
                 } else if (input.buttonIsPressed(Button.B)) {
                     pontos_jogador += 1
-                    basic.showString("You won")
+                    basic.clearScreen()
+                    basic.showIcon(IconNames.Happy)
                     break;
                 }
             }
@@ -36,17 +40,17 @@ basic.forever(function () {
         }
         basic.clearScreen()
         basic.showString("Placar")
-        basic.showIcon(IconNames.Happy)
         basic.showString("Microbit:")
         basic.showNumber(pontos_microbit)
-        basic.showIcon(IconNames.StickFigure)
+        basic.clearScreen()
         basic.showString("Jogador:")
         basic.showNumber(pontos_jogador)
         pontos_microbit = 0
         pontos_jogador = 0
+        basic.clearScreen()
     } else if (input.isGesture(Gesture.ScreenUp)) {
         basic.clearScreen()
-        basic.showString("Ready Set")
+        basic.showString("PvP")
         basic.showString("Go!")
         while (true) {
             basic.showIcon(IconNames.Asleep)
@@ -74,5 +78,6 @@ basic.forever(function () {
         basic.showNumber(pontos_jogador_2)
         pontos_jogador = 0
         pontos_jogador_2 = 0
+        basic.clearScreen()
     }
 })
