@@ -10,6 +10,7 @@ basic.forever(function () {
         basic.showString("Go!")
         while (true) {
             basic.clearScreen()
+            basic.showString("Jokenpo")
             jogada = randint(1, 3)
             if (jogada == 1) {
                 basic.showIcon(IconNames.Diamond)
@@ -22,15 +23,19 @@ basic.forever(function () {
                 basic.pause(200)
             }
             while (true) {
-                if (input.buttonIsPressed(Button.A)) {
-                    pontos_microbit += 1
+                if (input.isGesture(Gesture.LogoDown)) {
                     basic.clearScreen()
-                    basic.showIcon(IconNames.Sad)
+                    basic.showIcon(IconNames.Asleep)
                     break;
                 } else if (input.buttonIsPressed(Button.B)) {
                     pontos_jogador += 1
                     basic.clearScreen()
                     basic.showIcon(IconNames.Happy)
+                    break;
+                } else if (input.buttonIsPressed(Button.A)) {
+                    pontos_microbit += 1
+                    basic.clearScreen()
+                    basic.showIcon(IconNames.Sad)
                     break;
                 }
             }
